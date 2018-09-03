@@ -27,10 +27,15 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 | 이름 | 유형 | 필수 여부 | 유효 범위 | 설명 |
 | --- | --- | ----- | ----- | --- |
 | q | String | 필수 |  | 질의 |
+| region | String |  | kr/jp | 대상 국가 코드. 지정하지 않으면 기본값은 kr |
 | startRank | int |  | 1~1,000 | 몇 번째 검색 결과부터 반환할 것인지를 지정.<br>지정하지 않으면 기본값은 1. |
 | returnCount | int |  | 1~100 | 몇 개의 검색 결과를 반환할 것인지를 지정.<br>지정하지 않으면 기본값은 100. |
 
 ### 응답
+
+Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징에 따라 다릅니다.
+
+#### KR
 
 [응답 본문]
 
@@ -90,6 +95,58 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 | zipCode | String | 새 우편번호 |
 | oldZipCode | String | 기존 우편번호<br>(※ 2015년 8월 1일 이후 추가/변경된 건물은 행정자치부가 기존 6자리 우편번호를 제공하지 않음. 이 경우, 필드는 '000-000'을 반환.) |
 | groupByState | List | 검색된 주소 개수를 시/도 단위로 묶은 결과 목록 |
+| state | String | 묶은 시/도 이름 |
+| count | int | 묶은 시/도 각각의 개수 |
+| startRank | int | 반환된 주소의 시작 등수 |
+| returnCount | int | 반환된 주소의 총 개수. totalCount보다 작거나 같음. |
+
+#### JP
+
+[응답 본문]
+
+```
+{
+    "header": {
+        "isSuccessful": boolean,
+        "resultCode": int,
+        "resultMessage": String
+    },
+    "body": {
+        "query": String,
+        "totalCount": int,
+        "addresses" : [
+            {
+                "address": String,
+                "addressEnglish": String,
+                "jisCode": String,
+                "zipCode": String
+            },
+            ...
+        ],
+        "groupByState": [
+            {
+                "state": String,
+                "count": int
+            },
+            ...
+        ],
+        "startRank": int,
+        "returnCount": int
+    }
+}
+```
+
+[필드]
+
+| 이름 | 유형 | 설명 |
+| --- | --- | --- |
+| query | String | 질의 |
+| totalCount | int | 검색된 주소의 총 갯수 |
+| addresses | List | 검색된 주소 목록 |
+| address | String | 주소 |
+| addressEnglish | String | 영문 주소 |
+| jisCode | String | 전국 지방공공단체 코드 |
+| zipCode | String | 우편번호 |
 | state | String | 묶은 시/도 이름 |
 | count | int | 묶은 시/도 각각의 개수 |
 | startRank | int | 반환된 주소의 시작 등수 |
