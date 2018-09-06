@@ -33,6 +33,10 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 
 ### 응답
 
+Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징에 따라 다릅니다.
+
+#### KR
+
 [응답 본문]
 
 ```
@@ -93,6 +97,58 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 | groupByState | List | 검색된 주소 개수를 시/도 단위로 묶은 결과 목록 |
 | state | String | 묶은 시/도 이름 |
 | count | int | 묶은 시/도 각각의 개수 |
+| startRank | int | 반환된 주소의 시작 등수 |
+| returnCount | int | 반환된 주소의 총 개수. totalCount보다 작거나 같음. |
+
+#### JP
+
+[응답 본문]
+
+```
+{
+    "header": {
+        "isSuccessful": boolean,
+        "resultCode": int,
+        "resultMessage": String
+    },
+    "body": {
+        "query": String,
+        "totalCount": int,
+        "addresses" : [
+            {
+                "address": String,
+                "addressEnglish": String,
+                "jisCode": String,
+                "zipCode": String
+            },
+            ...
+        ],
+        "groupByState": [
+            {
+                "state": String,
+                "count": int
+            },
+            ...
+        ],
+        "startRank": int,
+        "returnCount": int
+    }
+}
+```
+
+[필드]
+
+| 이름 | 유형 | 설명 |
+| --- | --- | --- |
+| query | String | 질의 |
+| totalCount | int | 검색된 주소의 총 갯수 |
+| addresses | List | 검색된 주소 목록 |
+| address | String | 주소 |
+| addressEnglish | String | 영문 주소 |
+| jisCode | String | 전국 지방공공단체 코드 |
+| zipCode | String | 우편번호 |
+| state | String | 묶은 도도부현 이름 |
+| count | int | 묶은 도도부현 각각의 개수 |
 | startRank | int | 반환된 주소의 시작 등수 |
 | returnCount | int | 반환된 주소의 총 개수. totalCount보다 작거나 같음. |
 
