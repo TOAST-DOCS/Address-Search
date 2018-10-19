@@ -52,6 +52,8 @@ Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징�
         "addresses" : [
             {
                 "roadAddress": String,
+                "roadAddressDetail": String,
+                "roadAddressDetailList": [ String, ... ],
                 "roadAddressExtra": String,
                 "roadAddressEnglish": String,
                 "jibunAddress": String,
@@ -85,7 +87,9 @@ Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징�
 | totalCount | int | 검색된 주소의 총 갯수 |
 | addresses | List | 검색된 주소 목록 |
 | roadAddress | String | 기본 도로명주소 |
-| roadAddressExtra | String | 도로명주소의 참고 항목 |
+| roadAddressDetail | String | 도로명주소의 대표 참고 항목 |
+| roadAddressDetailList | List | 도로명주소의 전체 참고 항목 목록 |
+| roadAddressExtra | String | 도로명주소의 추천 참고 항목 |
 | roadAddressEnglish | String | 영문 도로명주소 |
 | jibunAddress | String | 지번 주소 |
 | relatedJibun | String | 관련 지번 |
