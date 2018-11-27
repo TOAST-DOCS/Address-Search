@@ -12,7 +12,7 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 
 | 메서드 | URI |
 | --- | --- |
-| GET | http://api-address.cloud.toast.com/address/v1/appkeys/{appKey}/addresses |
+| GET | http://api-address.cloud.toast.com/address/v2/appkeys/{appKey}/addresses |
 
 [요청 헤더]
 
