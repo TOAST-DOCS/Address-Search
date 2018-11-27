@@ -1,6 +1,6 @@
 ## Search > Address Search > Release Notes
 
-### 2018.10.23
+### 2018.11.27
 
 #### 기능 개선
 
