@@ -1,4 +1,4 @@
-## Search > Address Search > API Guide
+## Search > Address Search > API v2.0 Guide
 
 Address Search를 사용하는데 필요한 API를 설명합니다.
 

@@ -1,4 +1,4 @@
-## Search > Address Search > API v2.0 가이드
+## Search > Address Search > API v1.0 가이드
 
 Address Search를 사용하는데 필요한 API를 설명합니다.
 
@@ -12,7 +12,7 @@ Address Search를 사용하는데 필요한 API를 설명합니다.
 
 | 메서드 | URI |
 | --- | --- |
-| GET | http://api-address.cloud.toast.com/address/v2/appkeys/{appKey}/addresses |
+| GET | http://api-address.cloud.toast.com/address/v1/appkeys/{appKey}/addresses |
 
 [요청 헤더]
 
@@ -52,8 +52,6 @@ Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징�
         "addresses" : [
             {
                 "roadAddress": String,
-                "roadAddressDetail": String,
-                "roadAddressDetailList": [ String, ... ],
                 "roadAddressExtra": String,
                 "roadAddressEnglish": String,
                 "jibunAddress": String,
@@ -87,9 +85,7 @@ Address Search의 응답 유형은 요청 대상 국가의 주소체계 특징�
 | totalCount | int | 검색된 주소의 총 갯수 |
 | addresses | List | 검색된 주소 목록 |
 | roadAddress | String | 기본 도로명주소 |
-| roadAddressDetail | String | 도로명주소의 대표 참고 항목 |
-| roadAddressDetailList | List | 도로명주소의 전체 참고 항목 목록 |
-| roadAddressExtra | String | 도로명주소의 추천 참고 항목 |
+| roadAddressExtra | String | 도로명주소의 참고 항목 |
 | roadAddressEnglish | String | 영문 도로명주소 |
 | jibunAddress | String | 지번 주소 |
 | relatedJibun | String | 관련 지번 |
